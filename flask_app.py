@@ -16,6 +16,10 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
 
+# Auto-create database tables on app initialization
+with app.app_context():
+    db.create_all()
+    
 # --- THIS IS THE ROUTE YOU NEED TO UPDATE ---
 @app.route("/", methods=["GET", "POST"])
 def index():
