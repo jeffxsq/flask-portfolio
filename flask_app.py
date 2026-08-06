@@ -38,7 +38,7 @@ def index():
         return redirect(url_for("index"))
 
     comments = Comment.query.all()
-    return render_template("main_page.html", comments=comments)
+    return render_template("templates:index.html", comments=comments)
 
 # --- Authentication Routes ---
 @app.route("/login", methods=["GET", "POST"])
