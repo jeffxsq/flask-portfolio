@@ -1,10 +1,13 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-# Database configuration
+# Secret key required by Flask to encrypt session cookies
+app.secret_key = "super-secret-key-change-this-in-production"
+
+# Database Configuration
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(BASE_DIR, "comments.db")
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_PATH}"
@@ -16,14 +19,17 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
 
-# Auto-create database tables on app initialization
 with app.app_context():
     db.create_all()
-    
-# --- THIS IS THE ROUTE YOU NEED TO UPDATE ---
+
+# --- Main Route ---
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        # Task B: Real Security - Check server-side session authentication
+        if not session.get("logged_in"):
+            return redirect(url_for("login"))
+
         comment_content = request.form.get("content")
         if comment_content and comment_content.strip():
             new_comment = Comment(content=comment_content.strip())
@@ -32,5 +38,31 @@ def index():
         return redirect(url_for("index"))
 
     comments = Comment.query.all()
-    # Note: pointing to "main_page.html" inside your templates/ folder
-    return render_template("templates:index.html", comments=comments)
+    return render_template("main_page.html", comments=comments)
+
+# --- Authentication Routes ---
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    error = None
+    if request.method == "POST":
+        # Basic validation (Per the "Real Security" section milestone)
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        # Basic credential check for demonstration
+        if username == "admin" and password == "password123":
+            session["logged_in"] = True
+            session["username"] = username
+            return redirect(url_for("index"))
+        else:
+            error = "Invalid credentials. Please try again."
+
+    return render_template("login.html", error=error)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("index"))
+
+if __name__ == "__main__":
+    app.run(debug=True)
