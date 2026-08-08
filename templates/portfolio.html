@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Welcome</title>
+    <title>Jeff Xu | Portfolio</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -15,123 +15,248 @@
             flex-direction: column;
             padding: 30px;
         }
+
+        /* --- Header Navigation --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             padding-bottom: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
-        .nav-links a, .btn {
+        .logo {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-links a {
             color: #FFFFFF;
             text-decoration: none;
             font-weight: 600;
-            margin-left: 20px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.2s ease;
+            transition: color 0.2s ease;
         }
-        .nav-links a:hover, .btn:hover {
+        .nav-links a:hover {
+            color: #D4F2BD;
+        }
+        .btn-linkedin {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.2s ease !important;
+        }
+        .btn-linkedin:hover {
             background-color: #D4F2BD;
-            color: #3B73A9;
+            color: #3B73A9 !important;
             border-color: #D4F2BD;
         }
+
+        /* --- Hero Section --- */
         .hero {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1.4fr 1fr;
             gap: 40px;
             align-items: center;
             max-width: 1100px;
-            margin: 0 auto;
+            margin: 0 auto 60px auto;
             width: 100%;
-            flex-grow: 1;
+        }
+        .subtitle {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
         .headline {
-            font-size: 3.5rem;
+            font-size: 3rem;
             line-height: 1.15;
-            font-weight: 300;
-            letter-spacing: -1px;
+            font-weight: 400;
+            color: #FFFFFF;
+            margin-bottom: 20px;
         }
+        .headline span {
+            color: #D4F2BD;
+            font-weight: 700;
+        }
+        .bio-text {
+            color: #D4F2BD;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        /* --- CTA Buttons --- */
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .btn-primary {
+            background-color: #D4F2BD;
+            color: #3B73A9;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background-color: #FFFFFF;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            border-color: #D4F2BD;
+            color: #D4F2BD;
+        }
+
+        /* --- Profile Image Container --- */
         .profile-container {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
         .profile-img {
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #D4F2BD;
-            background-color: #2c5985;
-            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
-        .profile-title {
+
+        /* --- Projects Section --- */
+        .projects-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 40px;
+        }
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            color: #D4F2BD;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .section-title {
+            font-size: 2.2rem;
             color: #FFFFFF;
-            font-size: 1.1rem;
-            text-align: center;
-            border-left: 2px solid #D4F2BD;
-            padding-left: 10px;
+            margin-bottom: 30px;
         }
-        .portfolio-list {
-            margin-top: 50px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+        .section-title span {
+            color: #D4F2BD;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         .card {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 8px;
-            flex: 1;
-            min-width: 250px;
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
-        .card h3 { color: #FFFFFF; margin-bottom: 10px; }
-        .card p { color: #D4F2BD; font-size: 0.95rem; }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #D4F2BD;
+        }
+        .card h3 {
+            color: #FFFFFF;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: #D4F2BD;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Top Navigation Header -->
     <header>
-        <h2 style="color: #FFFFFF;">Portfolio</h2>
-        <div class="nav-links">
-            <a href="/scratchpad">Scratch Pad</a>
-            <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+        <a href="/" class="logo">MA</a>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="#about">About</a>
+            <a href="/scratchpad">Scratchpad</a>
+            <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener" class="btn-linkedin">
+                LinkedIn
+            </a>
+        </nav>
     </header>
 
+    <!-- Main Hero Section -->
     <main class="hero">
         <div>
-            <h1 class="headline">
-                Software / Web Apps / Systems / Security / Automation
-            </h1>
-
-            <div class="portfolio-list">
-                <div class="card">
-                    <h3>Mini Project A</h3>
-                    <p>Web app integration with Flask, SQLite database, and automated deployment pipelines.</p>
-                </div>
-                <div class="card">
-                    <h3>Mini Project B</h3>
-                    <p>Session-based authentication, access control gates, and dynamic user state updates.</p>
-                </div>
+            <div class="subtitle">Cloud Support & DevOps</div>
+            <h1 class="headline">Hi, I am <span>Jeff Xu.</span></h1>
+            <p class="bio-text">
+                An aspiring Cloud Support and DevOps Engineer interested in Linux, Python, cloud infrastructure, automation, and technical troubleshooting.
+            </p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn-primary">Who am I?</a>
+                <a href="mailto:your-email@example.com" class="btn-secondary">Get in touch</a>
             </div>
         </div>
 
+        <!-- Profile Photo -->
         <div class="profile-container">
-            <img src="https://via.placeholder.com/260" alt="Profile Photo" class="profile-img">
-            <div class="profile-title">
-                <strong>Your Name</strong><br>
-                Software Developer
-            </div>
+            <!-- REPLACE 'profile.jpg' WITH THE PATH TO YOUR IMAGE (e.g., /static/profile.jpg) -->
+            <img src="/static/profile.jpg" alt="Jeff Xu" class="profile-img">
         </div>
     </main>
+
+    <!-- Selected Work & My Projects Section -->
+    <section class="projects-section" id="about">
+        <div class="section-tag">Selected Work</div>
+        <h2 class="section-title">My <span>Projects</span></h2>
+
+        <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="card">
+                <h3>Network Scanner</h3>
+                <p>A Linux network scanner using Nmap and cron to identify devices connected to a network.</p>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card">
+                <h3>Flask Scratchpad</h3>
+                <p>A Flask website that allows visitors to post comments saved in an SQLite database.</p>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
