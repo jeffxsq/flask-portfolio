@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeff Xu | Portfolio</title>
+
+    <!-- Google Fonts: Italiana for display headings & Plus Jakarta Sans for UI text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #3B73A9;
             color: #D4F2BD;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             padding: 30px;
         }
 
+        /* Headings use the decorative display serif font from the image */
+        h1, h2, .headline, .section-title, .hero-title {
+            font-family: 'Italiana', Georgia, serif;
+            font-weight: 400;
+            
         /* --- Header Navigation --- */
         header {
             display: flex;
