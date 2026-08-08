@@ -3,11 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-# Secret key required by Flask to encrypt session cookies
 app.secret_key = "super-secret-key-change-this-in-production"
 
-# Database Configuration
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(BASE_DIR, "comments.db")
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_PATH}"
@@ -22,11 +19,15 @@ class Comment(db.Model):
 with app.app_context():
     db.create_all()
 
-# --- Main Route ---
-@app.route("/", methods=["GET", "POST"])
+# --- Bonus Task A: Introduction / Portfolio Route ---
+@app.route("/")
+def portfolio():
+    return render_template("portfolio.html")
+
+# --- Separate Scratch Pad / Comments Page ---
+@app.route("/scratchpad", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        # Task B: Real Security - Check server-side session authentication
         if not session.get("logged_in"):
             return redirect(url_for("login"))
 
@@ -38,18 +39,16 @@ def index():
         return redirect(url_for("index"))
 
     comments = Comment.query.all()
-    return render_template("templates:index.html", comments=comments)
+    return render_template("main_page.html", comments=comments)
 
 # --- Authentication Routes ---
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error = None
     if request.method == "POST":
-        # Basic validation (Per the "Real Security" section milestone)
         username = request.form.get("username")
         password = request.form.get("password")
 
-        # Basic credential check for demonstration
         if username == "admin" and password == "password123":
             session["logged_in"] = True
             session["username"] = username
