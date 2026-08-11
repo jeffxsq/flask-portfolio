@@ -170,12 +170,63 @@
             line-height: 1.6;
             opacity: 0.9;
         }
+
+        /* --- Top Navigation Bar Styles --- */
+        .login-header {
+            padding: 30px 10% 40px 10%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .top-nav a {
+            color: #FFFFFF;
+            text-decoration: none !important;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .top-nav a:hover {
+            color: #D4F2BD;
+        }
+
+        /* LinkedIn Pill Button in Nav */
+        .top-nav .btn-linkedin {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 18px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-nav .btn-linkedin:hover {
+            border-color: #D4F2BD;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header class="login-header">
+    <!-- Header Section with Navigation -->
+     <header class="login-header">
+        <nav class="top-nav">
+            <a href="/">Home</a>
+            <a href="/#about">About</a>
+            <a href="/scratchpad">Scratchpad</a>
+            <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener" class="btn-linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </nav>
+
         <div class="section-tag">SECURE ACCESS</div>
         <h1 class="login-title">Log In</h1>
         <p class="login-subtitle">Sign in to post comments on the Scratchpad.</p>
