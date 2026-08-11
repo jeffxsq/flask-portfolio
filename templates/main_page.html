@@ -76,6 +76,61 @@
         }
         button[type="submit"]:hover { background-color: #ffffff; }
         a { color: #D4F2BD; }
+        /* --- Flexbox Sticky Layout --- */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Ensures the main content container expands so footer stays anchored at bottom */
+        .container {
+            flex-grow: 1;
+        }
+
+        /* --- Centered Footer Styles --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 30px;
+            padding-bottom: 20px;
+            margin-top: 60px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .social-icons a {
+            color: #D4F2BD;
+            text-decoration: none !important;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .social-icons a:hover {
+            color: #FFFFFF;
+        }
+
+        .social-icons .divider {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-text {
+            color: #D4F2BD;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -123,5 +178,17 @@
         </div>
     </div>
 
+        <!-- Centered Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener">LinkedIn</a>
+            <span>•</span>
+            <a href="https://github.com/your-github-username" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="footer-text">
+            <p>Created by Jeff X using Python Flask.</p>
+            <p>Cloud Support & DevOps Portfolio</p>
+        </div>
+    </footer>
 </body>
 </html>
