@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-portfolio-deployment
+  labels:
+    app: flask-portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-portfolio
+  template:
+    metadata:
+      labels:
+        app: flask-portfolio
+    spec:
+      containers:
+      - name: flask-portfolio
+        image: jjeffxsq/flask-portfolio:v1.0.0
+        ports:
+        - containerPort: 5000
