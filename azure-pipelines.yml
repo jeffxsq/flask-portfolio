@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  imageRepository: 'my-flask-app'
+  imageRepository: 'jjeffxsq/my-flask-app'
   containerRegistry: 'dockerhub-connection' # Name of your Docker Registry Service Connection in Azure DevOps
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
