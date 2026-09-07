@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: flask-app-placeholder # The pipeline will replace this using the containers input
+        image: jjeffxsq/my-flask-app # The pipeline will replace this using the containers input
         ports:
         - containerPort: 5000
 ---
